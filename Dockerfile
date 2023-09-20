@@ -69,6 +69,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > /tmp/rustup.sh \
 # Appimage installation:
 COPY appimage/setup.sh /tmp
 COPY appimage/patchelf.sh /tmp
+COPY appimage/linuxdeploy-plugin-gtk.patch /tmp
 RUN pushd /tmp \
   && ./setup.sh \
   && rm setup.sh
