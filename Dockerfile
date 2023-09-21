@@ -45,7 +45,7 @@ RUN dnf -y install \
     pulseaudio-libs-devel vulkan-loader-devel \
     wayland-devel wayland-protocols-devel \
     mesa-libGL-devel libX11-devel libXft-devel libXext-devel libXrandr-devel libXi-devel libXcursor-devel libXdamage-devel libXinerama-devel libxkbcommon-devel libxkbcommon-x11-devel \
-    perl-IPC-Cmd \
+    perl-IPC-Cmd gtk-update-icon-cache \
   && dnf clean all \
   && rm -rf /var/cache/dnf
 
