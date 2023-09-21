@@ -16,13 +16,14 @@ RUN dnf -y install epel-release \
   && dnf clean all \
   && rm -rf /var/cache/dnf
 
-ARG CUDA_RPM=cuda-repo-rhel8-12-2-local-12.2.0_535.54.03-1.x86_64.rpm
-RUN curl --proto '=https' --tlsv1.2 -sSf https://developer.download.nvidia.com/compute/cuda/12.2.0/local_installers/${CUDA_RPM} > /tmp/${CUDA_RPM} \
-  && rpm -i /tmp/${CUDA_RPM} \
-  && rm -f /tmp/${CUDA_RPM} \
-  && dnf -y install cuda \
-  && dnf clean all \
-  && rm -rf /var/cache/dnf
+# Disable CUDA:
+# ARG CUDA_RPM=cuda-repo-rhel8-12-2-local-12.2.0_535.54.03-1.x86_64.rpm
+# RUN curl --proto '=https' --tlsv1.2 -sSf https://developer.download.nvidia.com/compute/cuda/12.2.0/local_installers/${CUDA_RPM} > /tmp/${CUDA_RPM} \
+#   && rpm -i /tmp/${CUDA_RPM} \
+#   && rm -f /tmp/${CUDA_RPM} \
+#   && dnf -y install cuda \
+#   && dnf clean all \
+#   && rm -rf /var/cache/dnf
 
 # Required base packages
 RUN dnf -y install xz bzip2 less python39-pip \
