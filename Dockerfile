@@ -32,7 +32,7 @@ RUN dnf -y install xz bzip2 less python39-pip \
 
 ARG DEVTOOLSET=gcc-toolset-12
 # Required for building vcpkg packages
-RUN dnf -y install ${DEVTOOLSET} make cmake ninja-build git elfutils autoconf automake libtool zlib-devel curl zip unzip tar bison flex \
+RUN dnf -y install ${DEVTOOLSET} make cmake ninja-build git elfutils autoconf automake libtool zlib-devel curl wget zip unzip tar bison flex \
   && dnf clean all \
   && rm -rf /var/cache/dnf \
   && echo -e "source /opt/rh/${DEVTOOLSET}/enable" >> /etc/profile.d/compiler.sh
