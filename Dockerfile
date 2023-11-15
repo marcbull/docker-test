@@ -66,7 +66,8 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > /tmp/rustup.sh \
   && cargo install just \
   && cargo install cargo-bundle-licenses \
   && cargo install cargo-audit \
-  && cargo install typos-cli
+  && cargo install typos-cli \
+  && cargo install cargo-version-util
 
 # Appimage installation:
 COPY appimage/setup.sh /tmp
