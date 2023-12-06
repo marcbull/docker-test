@@ -9,7 +9,9 @@ RUN sed -i -re "s|enabled=0|enabled=1|g" /etc/yum.repos.d/almalinux-powertools.r
 RUN dnf -y install \
     findutils \
     which \
-    vim
+    vim \
+  && dnf clean all \
+  && rm -rf /var/cache/dnf
 
 # Add epel repository
 RUN dnf -y install epel-release \
@@ -26,9 +28,11 @@ RUN dnf -y install epel-release \
 #   && rm -rf /var/cache/dnf
 
 # Required base packages
-RUN dnf -y install xz bzip2 less python39-pip \
+RUN dnf -y install xz bzip2 less python3.11-pip \
   && dnf clean all \
   && rm -rf /var/cache/dnf
+
+RUN pip3 install meson
 
 ARG DEVTOOLSET=gcc-toolset-12
 # Required for building vcpkg packages
@@ -53,8 +57,6 @@ RUN dnf -y install \
 RUN dnf -y reinstall libblkid lz4-libs \
   && dnf clean all \
   && rm -rf /var/cache/dnf
-
-RUN pip3 install meson
 
 # Install rust and some cargo tools
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > /tmp/rustup.sh \
